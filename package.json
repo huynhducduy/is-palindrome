@@ -1,7 +1,7 @@
 {
   "name": "@huynhducduy/is-palindrome",
   "description": "Zero dependency, lightweight and fully functional palindrome checker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "version_short": "5.0",
   "keywords": [
     "palindrome"
@@ -28,7 +28,7 @@
   "main": "dist/is-palindrome.js",
   "module": "index.js",
   "files": [
-    "dist/is-palindrome.{js,map}",
+    "dist/is-palindrome.*.{js,map}",
     "index.js"
   ],
   "scripts": {
