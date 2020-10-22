@@ -1,4 +1,6 @@
-# Palindrome Checker ![npm (scoped)](https://img.shields.io/npm/v/@huynhducduy/is-palindrome)
+# Palindrome Checker
+
+![npm (scoped)](https://img.shields.io/npm/v/@huynhducduy/is-palindrome)
 
 > Zero dependency, lightweight and fully functional palindrome checker.
 
@@ -12,7 +14,7 @@ npm i @huynhducduy/is-palindrome --save
 
 <!-- toc -->
 
-- [Palindrome Checker !npm (scoped)](#palindrome-checker-img-srchttpsimgshieldsionpmvhuynhducduyis-palindrome-altnpm-scoped)
+- [Palindrome Checker](#palindrome-checker)
   - [Table of Contents](#table-of-contents)
   - [Usage](#usage)
   - [API](#api)
