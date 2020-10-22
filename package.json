@@ -1,5 +1,5 @@
 {
-  "name": "is-palindrome",
+  "name": "@huynhducduy/is-palindrome",
   "description": "Zero dependency, lightweight and fully functional palindrome checker",
   "version": "1.0.0",
   "version_short": "5.0",
