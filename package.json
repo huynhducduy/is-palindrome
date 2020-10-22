@@ -6,6 +6,9 @@
   "keywords": [
     "palindrome"
   ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "homepage": "",
   "author": "Huynh Duc Duy (https://huynhducduy.me)",
   "license": "MIT",
