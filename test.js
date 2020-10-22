@@ -14,6 +14,7 @@ const testCases = [
     ['Trim both', ['      1       ', {trim: 'both'}], true],
     ['Trim trailing', ['aaaaaaabaa', {trimTrailing: 'a'}], true],
     ['Case sensitive', ['abA', {caseSensitive: true}], false],
+    ['Case In-sensitive', ['abA', {caseSensitive: false}], true],
     ['Odd length palindrome string', ['12321'], true],
     ['Even length palindrome string', ['123321'], true],
     ['Not a palindrome string', ['12312321'], false],
