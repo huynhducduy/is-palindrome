@@ -1,0 +1,40 @@
+{
+  "name": "is-palindrome",
+  "description": "Zero dependency, lightweight and fully functional palindrome checker",
+  "version": "1.0.0",
+  "version_short": "5.0",
+  "keywords": [
+    "palindrome"
+  ],
+  "homepage": "",
+  "author": "Huynh Duc Duy (https://huynhducduy.me)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huynhducduy/is-palindrome.git"
+  },
+  "bugs": {
+    "url": "https://github.com/huynhducduy/is-palindrome/issues"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^15.1.0",
+    "rollup": "^2.32.1",
+    "rollup-plugin-uglify": "^6.0.4",
+    "yarn-run-all": "^3.1.1"
+  },
+  "main": "dist/is-palindrome.js",
+  "module": "index.js",
+  "files": [
+    "dist/is-palindrome.{js,map}",
+    "index.js"
+  ],
+  "scripts": {
+    "test": "node ./test.js",
+    "compile": "npm-run-all --parallel compile:*",
+    "compile:iife": "rollup index.js --plugin commonjs --name \"isPalindrome\" --file dist/is-palindrome.js --format iife --sourcemap --compact",
+    "compile:esm": "rollup index.js --plugin commonjs --file dist/is-palindrome.module.js --format esm --sourcemap --compact",
+    "compile:amd": "rollup index.js --plugin commonjs --file dist/is-palindrome.amd.js --format amd --sourcemap --compact",
+    "compile:umd": "rollup index.js --plugin commonjs --name \"isPalindrome\" --file dist/is-palindrome.umd.js --format umd --sourcemap --compact",
+    "compile:system": "rollup index.js --plugin commonjs --file dist/is-palindrome.sys.js --format system --sourcemap --compact"
+  }
+}
