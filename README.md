@@ -38,7 +38,7 @@ ES Modules
 import isPalindrome from "@huynhducduy/is-palindrome/dist/is-palindrome.module.js";
 ```
 
-Also support `amd (requirejs)`, `umd`, `systemjs` as
+Also support `amd (requirejs)`, `umd`, `systemjs` as well.
 
 ## API
 
@@ -71,7 +71,7 @@ Options pass to is-palindrome
 | normalize     | boolean                        | false     | Inform the function to normalize string or not                                                                                                                              |
 | normalizeForm | "NFC", "NFD", "NFKC", "NFKD"   | "NFC"     | The form being used to normalize string (if normalize === true), must be one of supported values, otherwise a exception will be thrown or the normalization will be omitted |
 | trim          | "none", "start", "end", "both" | "none"    | Trim trailing whitespace mode                                                                                                                                               |
-| trimTrailing  | string                         | undefined | Trim trailing characters or strings, regular expression supported                                                                                                           |
+| trimTrailing  | string, \[string\]             | undefined | Trim trailing characters or strings                                                                                                                                         |
 | caseSensitive | boolean                        | true      | Indicate the case sensitivity of the function                                                                                                                               |
 
 ## Other awesome projects
