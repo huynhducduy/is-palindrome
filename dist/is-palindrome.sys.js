@@ -932,7 +932,7 @@ UChar.udata={
 
 
 function trimTrailingChars(s, string) {
-    return s.replace(RegExp(string + "{2,}", "g"), string);
+    return s.replace(RegExp("(" + string + "){2,}", "g"), string);
 }
 var defaultNormalizeForm = "NFC";
 /**
@@ -944,7 +944,7 @@ var defaultNormalizeForm = "NFC";
  *     normalize: false, // Inform the function to normalize string or not
  *     normalizeForm: "NFC", // The form being used to normalize string (if normalize === true), must be one of ["NFC", "NFD", "NFKC", "NFKD"], otherwise a exception will be thrown or the normalization will be omitted
  *     trim: "none", // Trim mode: support [none, start (trim left), end (trim right), both]
- *     trimTrailing: undefined, // Trim trailing characters or strings, regular expression supported
+ *     trimTrailing: undefined, // Trim trailing string, can be string or array of string, otherwise a exception will be thrown or the function wil convert it to a string
  *     caseSensitive: true, // Indicate the case sensitivity of the function
  * }]
  * @param {Boolean} debug debug_mode
@@ -965,7 +965,7 @@ function isPalindrome(str, options = {
     // Perform string checking, string modification based on options -----------
 
     // Checking the first argument
-    if (typeof str !== 'string' && options.exception) throw TypeError("First argument must be a string");
+    if (typeof str !== 'string' && options.exception === true) throw TypeError("First argument must be a string");
     else str = String(str);
 
     // Normalize string
@@ -992,8 +992,24 @@ function isPalindrome(str, options = {
             break;
     }
 
-    if (options.trimTrailing !== undefined)
-        str = trimTrailingChars(str, options.trimTrailing);
+    if (options.trimTrailing !== undefined) {
+        if (typeof options.trimTrailing !== 'string' || (Array.isArray(options.trimTrailing) && trimTrailing.some(i => typeof i !== 'string'))) {
+            if (options.exception === true) {
+                throw new RangeError("trimTrailing must be a string or an array of strings");
+            } else {
+                if (Array.isArray(options.trimTrailing)) options.trimTrailing = options.trimTrailing.map(i => String(i));
+                else options.trimTrailing = String(options.trimTrailing);
+            }
+        }
+
+        if (typeof options.trimTrailing === 'string')
+            str = trimTrailingChars(str, options.trimTrailing);
+        else
+            for (var i = 0; i < options.trimTrailing.length; i++) {
+                if (debug) console.log("trim with", options.trimTrailing[i]);
+                str = trimTrailingChars(str, options.trimTrailing[i]);
+            }
+    }
 
     // Transform string to lower case if necessary
     if (options.caseSensitive !== true) str = str.toLowerCase();
