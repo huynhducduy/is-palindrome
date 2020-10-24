@@ -1,37 +1,99 @@
-## Welcome to GitHub Pages
+# Palindrome Checker
 
-You can use the [editor on GitHub](https://github.com/huynhducduy/is-palindrome/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+![npm (scoped)](https://img.shields.io/npm/v/@huynhducduy/is-palindrome)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+> Zero dependency, lightweight and fully functional palindrome checker.
 
-### Markdown
+Install with [npm](https://www.npmjs.com/)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```sh
+npm i @huynhducduy/is-palindrome --save
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Table of Contents
 
-### Jekyll Themes
+<!-- toc -->
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/huynhducduy/is-palindrome/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+- [Palindrome Checker](#palindrome-checker)
+  - [Table of Contents](#table-of-contents)
+  - [Usage](#usage)
+  - [API](#api)
+    - [default](#default)
+    - [options](#options)
+  - [Other awesome projects](#other-awesome-projects)
+  - [Running tests](#running-tests)
+  - [Contributing](#contributing)
 
-### Support or Contact
+## Usage
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+CommonJS (Node)
+
+```js
+var isPalindrome = require("@huynhducduy/is-palindrome");
+console.log(isPalindrome("imnotapalindrome"));
+```
+
+ES Modules
+
+```js
+import isPalindrome from "@huynhducduy/is-palindrome/dist/esm.js";
+console.log(isPalindrome("palindromemordnilap"));
+```
+
+Also support `amd` (RequireJS), `umd`, `sys` (SystemJS) and even `iife` (Browser) as well.
+
+## API
+
+### [default](index.js#L23)
+
+Check if the given string is a valid palindrome
+
+**Params**
+
+- `str` **{Any}**: String to check, it's not a valid string, the function will try to convert it, or will throws an exception
+- `options` **{Object}**: See [options object](#options)
+- `debug` **{Boolean}**: Log debug or not
+
+Return: **{Boolean}**: True if it is a valid palindrome that match out options, otherwise False
+
+**Example**
+
+```js
+var isPalindrome = require("@huynhducduy/is-palindrome/dist/is-palindrome.common.js");
+console.log(isPalindrome("ahhhhzha", { trimTrailing: "h" }, false)); // true
+```
+
+### [options](index.js#L23)
+
+Options pass to is-palindrome
+
+| name          | type/values                    | default   | description                                                                                                                                                                 |
+| ------------- | ------------------------------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| exception     | boolean                        | false     | Inform the function to throw exceptions or not                                                                                                                              |
+| normalize     | boolean                        | false     | Inform the function to normalize string or not                                                                                                                              |
+| normalizeForm | "NFC", "NFD", "NFKC", "NFKD"   | "NFC"     | The form being used to normalize string (if normalize === true), must be one of supported values, otherwise a exception will be thrown or the normalization will be omitted |
+| trim          | "none", "start", "end", "both" | "none"    | Trim trailing whitespace mode                                                                                                                                               |
+| trimTrailing  | string, \[string\]             | undefined | Trim trailing characters or strings                                                                                                                                         |
+| caseSensitive | boolean                        | true      | Indicate the case sensitivity of the function                                                                                                                               |
+
+## Other awesome projects
+
+- Update...
+
+## Running tests
+
+Install dev dependencies:
+
+```sh
+yarn && yarn test
+```
+
+Compile & Minify:
+
+```sh
+yarn compile
+```
+
+## Contributing
+
+Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/huynhducduy/is-palindrome/issues/new)
