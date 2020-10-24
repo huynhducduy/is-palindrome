@@ -1,15 +1,15 @@
 {
   "name": "@huynhducduy/is-palindrome",
   "description": "Zero dependency, lightweight and fully functional palindrome checker",
-  "version": "1.0.5",
-  "version_short": "5.0",
+  "version": "1.0.6",
+  "version_short": "1.0",
   "keywords": [
     "palindrome"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
-  "homepage": "",
+  "homepage": "https://github.com/huynhducduy/is-palindrome#readme",
   "author": "Huynh Duc Duy (https://huynhducduy.me)",
   "license": "MIT",
   "repository": {
@@ -22,22 +22,23 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^15.1.0",
     "rollup": "^2.32.1",
-    "rollup-plugin-uglify": "^6.0.4",
+    "rollup-plugin-terser": "^7.0.2",
     "yarn-run-all": "^3.1.1"
   },
-  "main": "dist/is-palindrome.js",
-  "module": "dist/is-palindrome.esm.js",
+  "main": "dist/cjs.js",
+  "browser": "dist/iife.js",
+  "module": "dist/esm.js",
   "files": [
-    "dist/is-palindrome.*.{js,map}"
+    "dist/*.{js,map}"
   ],
   "scripts": {
     "test": "node ./test.js",
     "compile": "npm-run-all --parallel compile:*",
-    "compile:iife": "rollup index.js --plugin commonjs --name \"isPalindrome\" --file dist/is-palindrome.js --format iife --sourcemap --compact",
-    "compile:cjs": "rollup index.js --plugin commonjs --name \"isPalindrome\" --file dist/is-palindrome.common.js --format cjs --exports default --sourcemap --compact",
-    "compile:esm": "rollup index.js --plugin commonjs --file dist/is-palindrome.module.js --format esm --sourcemap --compact",
-    "compile:amd": "rollup index.js --plugin commonjs --file dist/is-palindrome.amd.js --format amd --sourcemap --compact",
-    "compile:umd": "rollup index.js --plugin commonjs --name \"isPalindrome\" --file dist/is-palindrome.umd.js --format umd --sourcemap --compact",
-    "compile:system": "rollup index.js --plugin commonjs --file dist/is-palindrome.sys.js --format system --sourcemap --compact"
+    "compile:iife": "rollup index.js --plugin commonjs,terser --name \"isPalindrome\" --file dist/iife.js --format iife --compact",
+    "compile:cjs": "rollup index.js --plugin commonjs,terser --name \"isPalindrome\" --file dist/common.js --format cjs --exports default --compact",
+    "compile:esm": "rollup index.js --plugin commonjs,terser --file dist/esm.js --format esm --compact",
+    "compile:amd": "rollup index.js --plugin commonjs,terser --file dist/amd.js --format amd --compact",
+    "compile:umd": "rollup index.js --plugin commonjs,terser --name \"isPalindrome\" --file dist/umd.js --format umd --compact",
+    "compile:sys": "rollup index.js --plugin commonjs,terser --file dist/sys.js --format system --compact"
   }
 }
