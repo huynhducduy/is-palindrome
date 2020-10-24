@@ -1,13 +1,24 @@
 # Palindrome Checker
 
 ![npm (scoped)](https://img.shields.io/npm/v/@huynhducduy/is-palindrome)
+[![devDependencies Status](https://david-dm.org/huynhducduy/is-palindrome/dev-status.svg)](https://david-dm.org/huynhducduy/is-palindrome?type=dev)
+![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/@huynhducduy/is-palindrome)
+![npm](https://img.shields.io/npm/dm/@huynhducduy/is-palindrome)
+![jsDelivr hits (npm scoped)](https://img.shields.io/jsdelivr/npm/hm/@huynhducduy/is-palindrome)
+![Dependent repos (via libraries.io), scoped npm package](https://img.shields.io/librariesio/dependent-repos/npm/@huynhducduy/is-palindrome)
 
-> Zero dependency, lightweight and fully functional palindrome checker.
+> Zero dependencies, lightweight and fully functional palindrome checker
 
 Install with [npm](https://www.npmjs.com/)
 
 ```sh
 npm i @huynhducduy/is-palindrome --save
+```
+
+Install with [yarn](https://yarnpkg.com/)
+
+```sh
+yarn add @huynhducduy/is-palindrome
 ```
 
 ## Table of Contents
@@ -40,7 +51,16 @@ import isPalindrome from "@huynhducduy/is-palindrome/dist/esm.js";
 console.log(isPalindrome("palindromemordnilap"));
 ```
 
-Also support `amd` (RequireJS), `umd`, `sys` (SystemJS) and even `iife` (Browser) as well.
+Browser (IIFE)
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@huynhducduy/is-palindrome@1/dist/iife.js" crossorigin="anonymous"></script>
+<script>
+  document.write(isPalindrome("testtest"));
+<script>
+```
+
+Also support `amd` (RequireJS), `umd`, `sys` (SystemJS) as well.
 
 ## API
 
