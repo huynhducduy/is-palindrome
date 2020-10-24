@@ -29,16 +29,18 @@ npm i @huynhducduy/is-palindrome --save
 CommonJS (Node)
 
 ```js
-var isPalindrome = require("@huynhducduy/is-palindrome/dist/is-palindrome.common.js");
+var isPalindrome = require("@huynhducduy/is-palindrome");
+console.log(isPalindrome("imnotapalindrome"));
 ```
 
 ES Modules
 
 ```js
-import isPalindrome from "@huynhducduy/is-palindrome/dist/is-palindrome.module.js";
+import isPalindrome from "@huynhducduy/is-palindrome/dist/esm.js";
+console.log(isPalindrome("palindromemordnilap"));
 ```
 
-Also support `amd (requirejs)`, `umd`, `systemjs` as well.
+Also support `amd` (RequireJS), `umd`, `sys` (SystemJS) and even `iife` (Browser) as well.
 
 ## API
 
@@ -84,6 +86,12 @@ Install dev dependencies:
 
 ```sh
 yarn && yarn test
+```
+
+Compile & Minify:
+
+```sh
+yarn compile
 ```
 
 ## Contributing
