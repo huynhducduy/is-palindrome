@@ -14,7 +14,7 @@
     "palind"
   ],
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org"
   },
   "homepage": "https://github.com/huynhducduy/is-palindrome#readme",
   "author": "Huynh Duc Duy (https://huynhducduy.me)",
