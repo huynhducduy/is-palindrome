@@ -5,6 +5,8 @@ function trimTrailingChars(s, string) {
     return s.replace(RegExp("(" + string + "){2,}", "g"), string);
 }
 var defaultNormalizeForm = "NFC"
+var acceptedRemove = ['non-printable-ascii', 'punctuation', 'whitespace'];
+
 /**
  * Check if the given string is a valid palindrome
  *
@@ -16,6 +18,7 @@ var defaultNormalizeForm = "NFC"
  *     trim: "none", // Trim mode: support [none, start (trim left), end (trim right), both]
  *     trimTrailing: undefined, // Trim trailing string, can be string or array of string, otherwise a exception will be thrown or the function wil convert it to a string
  *     caseSensitive: true, // Indicate the case sensitivity of the function
+ *     remove: [], // Remove some kind of char from the string, supported: "non-printable-ascii", "punctuation", "whitespace"
  * }]
  * @param {Boolean} debug debug_mode
  * @return {Boolean} - True if it is a valid palindrome that match out options, otherwise False
@@ -28,6 +31,7 @@ function isPalindrome(str, options = {
     trim: "none",
     trimTrailing: undefined,
     caseSensitive: true,
+    remove: [],
 }, debug = false) {
     // coverage ignore next line
     if (debug) console.log("String before modification:", str);
@@ -53,6 +57,40 @@ function isPalindrome(str, options = {
             if (options.exception === true) throw e;
         }
     }
+
+    // Remove
+
+    if (!options.remove) options.remove = [];
+
+    if (typeof options.remove !== 'string' && !Array.isArray(options.remove)) {
+        if (options.exception === true) {
+            throw new RangeError("remove must be a string or an array of strings of accepted mode " + acceptedRemove, );
+        } else {
+            options.remove = [String(options.remove)];
+        }
+    } else if (typeof options.remove === 'string') options.remove = [options.remove];
+
+    if (options.remove.some(i => !acceptedRemove.includes(i))) {
+        throw new RangeError("remove must be a string or an array of strings of accepted mode " + acceptedRemove);
+    }
+
+    for (var i = 0; i < options.remove.length; i++) {
+        switch (options.remove[i]) {
+            case acceptedRemove[0]: // non-printable-ascii
+                str = str.replace(/[^\x20-\x7E]/g, '');
+                break;
+            case acceptedRemove[1]: // punctuation
+                str = str.replace(/[~`!@#$%^&*(){}\[\];:"'<,.>?\/\\|_+=-]/g,"");
+                break;
+            case acceptedRemove[2]: // whitespace
+                str = str.replace(/\s/g, "");
+                break;
+            default:
+        }
+    }
+
+    // Transform string to lower case if necessary
+    if (options.caseSensitive !== true) str = str.toLowerCase();
 
     // Trim string
     switch (options.trim) {
@@ -88,18 +126,15 @@ function isPalindrome(str, options = {
             }
     }
 
-    // Transform string to lower case if necessary
-    if (options.caseSensitive !== true) str = str.toLowerCase();
-
     // END Perform string checking, string modification based on options -------
 
     // coverage ignore next line
     if (debug) console.log("String after modification:", str);
 
-    if (str.length in [0,1]) return true;
+    if ([0,1].includes(str.length)) return true;
 
     var len = Math.floor(str.length / 2);
-    for (let i = 0; i < len; i++) {
+    for (var i = 0; i < len; i++) {
         if (str[i] !== str[str.length - i - 1])
         return false;
     }
