@@ -29,7 +29,10 @@ function isPalindrome(str, options = {
     trimTrailing: undefined,
     caseSensitive: true,
 }, debug = false) {
+    // coverage ignore next line
     if (debug) console.log("String before modification:", str);
+
+    // coverage ignore next line
     if (debug) console.log("Options:", options);
 
     // Perform string checking, string modification based on options -----------
@@ -42,6 +45,8 @@ function isPalindrome(str, options = {
     if (options.normalize === true) {
         try {
             str = str.normalize(options.normalizeForm);
+
+            // coverage ignore next line
             if (debug) console.log("Normalized in form of " + (options.normalizeForm || defaultNormalizeForm) + ":", str);
         }
         catch (e) {
@@ -64,7 +69,7 @@ function isPalindrome(str, options = {
     }
 
     if (options.trimTrailing !== undefined) {
-        if (typeof options.trimTrailing !== 'string' || (Array.isArray(options.trimTrailing) && trimTrailing.some(i => typeof i !== 'string'))) {
+        if (typeof options.trimTrailing !== 'string' || (Array.isArray(options.trimTrailing) && options.trimTrailing.some(i => typeof i !== 'string'))) {
             if (options.exception === true) {
                 throw new RangeError("trimTrailing must be a string or an array of strings");
             } else {
@@ -77,6 +82,7 @@ function isPalindrome(str, options = {
             str = trimTrailingChars(str, options.trimTrailing);
         else
             for (var i = 0; i < options.trimTrailing.length; i++) {
+                // coverage ignore next line
                 if (debug) console.log("trim with", options.trimTrailing[i])
                 str = trimTrailingChars(str, options.trimTrailing[i]);
             }
@@ -87,6 +93,7 @@ function isPalindrome(str, options = {
 
     // END Perform string checking, string modification based on options -------
 
+    // coverage ignore next line
     if (debug) console.log("String after modification:", str);
 
     if (str.length in [0,1]) return true;

@@ -54,10 +54,13 @@ console.log(isPalindrome("palindromemordnilap"));
 Browser (IIFE)
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@huynhducduy/is-palindrome@1/dist/iife.js" crossorigin="anonymous"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/@huynhducduy/is-palindrome@1/dist/iife.js"
+  crossorigin="anonymous"
+></script>
 <script>
   document.write(isPalindrome("testtest"));
-<script>
+</script>
 ```
 
 Also support `amd` (RequireJS), `umd`, `sys` (SystemJS) as well.

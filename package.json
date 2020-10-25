@@ -1,7 +1,7 @@
 {
   "name": "@huynhducduy/is-palindrome",
   "description": "Zero dependency, lightweight and fully functional palindrome checker",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "version_short": "1.0",
   "keywords": [
     "palindrome",
@@ -14,7 +14,7 @@
     "palind"
   ],
   "publishConfig": {
-    "registry": "https://registry.npmjs.org"
+    "registry": "https://npm.pkg.github.com"
   },
   "homepage": "https://github.com/huynhducduy/is-palindrome#readme",
   "author": "Huynh Duc Duy (https://huynhducduy.me)",
