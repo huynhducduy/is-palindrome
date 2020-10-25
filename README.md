@@ -28,6 +28,7 @@ yarn add @huynhducduy/is-palindrome
 - [Palindrome Checker](#palindrome-checker)
   - [Table of Contents](#table-of-contents)
   - [Usage](#usage)
+  - [Example](#example)
   - [API](#api)
     - [default](#default)
     - [options](#options)
@@ -41,14 +42,12 @@ CommonJS (Node)
 
 ```js
 var isPalindrome = require("@huynhducduy/is-palindrome");
-console.log(isPalindrome("imnotapalindrome"));
 ```
 
 ES Modules
 
 ```js
 import isPalindrome from "@huynhducduy/is-palindrome/dist/esm.js";
-console.log(isPalindrome("palindromemordnilap"));
 ```
 
 Browser (IIFE)
@@ -58,9 +57,22 @@ Browser (IIFE)
   src="https://cdn.jsdelivr.net/npm/@huynhducduy/is-palindrome@1/dist/iife.js"
   crossorigin="anonymous"
 ></script>
-<script>
-  document.write(isPalindrome("testtest"));
-</script>
+```
+
+## Example
+
+```js
+console.log(
+  isPalindrome(
+    "    Are we not pure? “No sir!” Panama’s moody Noriega brags. “It is garbage!” Irony dooms a man; a prisoner up to new era.    ",
+    {
+      remove: ["punctuation", "non-printable-ascii", "whitespace"],
+      caseSensitive: false,
+      trim: "both",
+    }
+  )
+);
+// true
 ```
 
 Also support `amd` (RequireJS), `umd`, `sys` (SystemJS) as well.
@@ -79,25 +91,27 @@ Check if the given string is a valid palindrome
 
 Return: **{Boolean}**: True if it is a valid palindrome that match out options, otherwise False
 
-**Example**
-
-```js
-var isPalindrome = require("@huynhducduy/is-palindrome/dist/is-palindrome.common.js");
-console.log(isPalindrome("ahhhhzha", { trimTrailing: "h" }, false)); // true
-```
-
 ### [options](index.js#L23)
 
-Options pass to is-palindrome
+Options pass to is-palindrome.
+The processing flow is: Normalize -> Remove -> (Transform to lower case) -> Trim (whitespace and trailing)
 
-| name          | type/values                    | default   | description                                                                                                                                                                 |
-| ------------- | ------------------------------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| exception     | boolean                        | false     | Inform the function to throw exceptions or not                                                                                                                              |
-| normalize     | boolean                        | false     | Inform the function to normalize string or not                                                                                                                              |
-| normalizeForm | "NFC", "NFD", "NFKC", "NFKD"   | "NFC"     | The form being used to normalize string (if normalize === true), must be one of supported values, otherwise a exception will be thrown or the normalization will be omitted |
-| trim          | "none", "start", "end", "both" | "none"    | Trim trailing whitespace mode                                                                                                                                               |
-| trimTrailing  | string, \[string\]             | undefined | Trim trailing characters or strings                                                                                                                                         |
-| caseSensitive | boolean                        | true      | Indicate the case sensitivity of the function                                                                                                                               |
+| name          | type/values                    | default | description                                                                                                                                                                 |
+| ------------- | ------------------------------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| exception     | boolean                        | false   | Inform the function to throw exceptions or not                                                                                                                              |
+| normalize     | boolean                        | false   | Inform the function to normalize string or not                                                                                                                              |
+| normalizeForm | "NFC", "NFD", "NFKC", "NFKD"   | "NFC"   | The form being used to normalize string (if normalize === true), must be one of supported values, otherwise a exception will be thrown or the normalization will be omitted |
+| remove        | string, \[string\]             | []      | remove some kind of char from string, accepted: "non-printable-ascii", "punctuation", "whitespace"                                                                          |
+| caseSensitive | boolean                        | true    | Indicate the case sensitivity of the function                                                                                                                               |
+| trim          | "none", "start", "end", "both" | "none"  | Trim trailing whitespace mode                                                                                                                                               |
+| trimTrailing  | string, \[string\]             |         | Trim trailing characters or strings                                                                                                                                         |
+
+<br/>
+Details: in `punctuation` remove mode, these chars will be remove:
+
+```text
+~\`!@#\$%^&\*(){}\[\];:"'<,.>?\/\\|\_+=-`
+```
 
 ## Other awesome projects
 
