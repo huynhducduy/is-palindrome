@@ -46,6 +46,7 @@
     "compile:esm": "rollup index.js --plugin commonjs,terser --file dist/esm.js --format esm --compact",
     "compile:amd": "rollup index.js --plugin commonjs,terser --file dist/amd.js --format amd --compact",
     "compile:umd": "rollup index.js --plugin commonjs,terser --name \"isPalindrome\" --file dist/umd.js --format umd --compact",
-    "compile:sys": "rollup index.js --plugin commonjs,terser --file dist/sys.js --format system --compact"
+    "compile:sys": "rollup index.js --plugin commonjs,terser --file dist/sys.js --format system --compact",
+    "prepack": "yarn compile"
   }
 }
