@@ -6,6 +6,7 @@
 ![npm](https://img.shields.io/npm/dm/@huynhducduy/is-palindrome)
 ![jsDelivr hits (npm scoped)](https://img.shields.io/jsdelivr/npm/hm/@huynhducduy/is-palindrome)
 ![Dependent repos (via libraries.io), scoped npm package](https://img.shields.io/librariesio/dependent-repos/npm/@huynhducduy/is-palindrome)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fhuynhducduy%2Fis-palindrome.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fhuynhducduy%2Fis-palindrome?ref=badge_shield)
 
 > Zero dependencies, lightweight and fully functional palindrome checker
 
@@ -134,3 +135,7 @@ yarn compile
 ## Contributing
 
 Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/huynhducduy/is-palindrome/issues/new)
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fhuynhducduy%2Fis-palindrome.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fhuynhducduy%2Fis-palindrome?ref=badge_large)
